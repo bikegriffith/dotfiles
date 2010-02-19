@@ -1,0 +1,64 @@
+#!/bin/bash
+#
+# Prompt configuration
+#
+# Two modes are available:
+#   default: `source .bash_prompt`
+#   sandbox: `source .bash_prompt sandbox`
+#
+# The "sandbox" mode is a richer prompt, which gives SVN branch location
+# information for the current working directory
+#
+
+parse_git_branch () {
+    git name-rev HEAD 2> /dev/null | sed 's#HEAD\ \(.*\)# (git::\1)#'
+}
+
+parse_svn_branch() {
+    # FIXME: this is a bit kludgey.  Clean it up.
+    parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' \
+        | awk -F / '{
+            if ($2 == "trunk" || $3 == "trunk" || $4 == "trunk") {
+                print "-trunk"
+            }
+            else if ($2 == "branches" && $3 != "") {
+                print "-"$2 "/" $3
+            }
+            else if ($3 == "branches" && $4 != "") {
+                print "-"$3 "/" $4
+            }
+            else if ($4 == "branches" && $5 != "") {
+                print "-"$4 "/" $5
+            }
+        }'
+}
+
+parse_svn_url() {
+    svn info 2>/dev/null | sed -ne 's#^URL: ##p'
+}
+
+parse_svn_repository_root() {
+    svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
+}
+
+# Colors
+c_wht="\[\033[00m\]"
+c_grn="\[\033[01;32m\]"
+c_ylw="\[\033[33m\]"
+
+# Window title text
+win_title='\[\e]2;\u@\H \w\a'
+
+# Normal
+PS1="${win_title}${c_grn}\u@\h${c_wht}:${c_grn}\w${c_wht}\$ "
+
+# Sandboxed:
+if [ "$1" == "sandbox" ] && [ "$VIRTUAL_ENV" != "" ]; then
+    # prefix (sandbox) onto prompt
+    # don't show username/host
+    # update the colors a bit
+    # display subversion branch
+    PS1="${win_title}${c_ylw}$(basename $VIRTUAL_ENV)\$(parse_svn_branch)${c_wht}:${c_grn}\w${c_wht}\$ "
+fi
+
+export PS1

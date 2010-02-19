@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# A quieter version of the nose runner.  This will supress many Warnings, as
+# well as the output of successful tests.  The only thing outputted is the
+# first error message (if any exists)
+#
+(python $HOME/bin/runquiettests.py -x -q $@ 2>&1 ) \
+    | grep -v '\-\-\-\-\-\-\-\-\-\-\-' \
+    | grep -v 'OK' \
+    | grep -v 'Ran [0-9]* test' \
+    | grep -v '^[ ]*$' \
+    | grep -v 'site-packages/nose' \
+
