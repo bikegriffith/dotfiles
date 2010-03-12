@@ -2,4 +2,15 @@
 username = Mike Griffith <bikegriffith@gmail.com>
 editor = vim
 
+[extensions]
+hgext.graphlog=
+hgext.churn=
+hgext.pager=
+color=
+
+[pager]
+pager = LESS='FSRX' less
+quiet = true
+attend = log, glog, diff, incoming, outgoing
+
 # vim:filetype=cfg
