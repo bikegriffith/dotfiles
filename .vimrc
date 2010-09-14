@@ -33,6 +33,10 @@ set suffixes-=.h      " do not skip C header files for filename completion
 "  n... : where to save the viminfo files
 set viminfo='10,\"100,:20,%,n~/.viminfo
 
+" Color scheme
+set t_Co=256
+colo inkpot
+
 " Interface
 set showmatch         " when a bracket is inserted, briefly jump to the match
 set guifont=-misc-fixed-medium-r-normal--15-140-75-75-c-90-iso8859-1
