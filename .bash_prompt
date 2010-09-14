@@ -36,13 +36,18 @@ parse_svn_repository_root() {
     svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
 }
 
+
+# XXX: the '\[' and '\]' characters need to wrap any non-printable pieces of
+# the prompt, in order to avoid a weird wrapping bug.
+# See more at http://tldp.org/HOWTO/Bash-Prompt-HOWTO/nonprintingchars.html
+
 # Colors
 c_wht="\[\033[00m\]"
 c_grn="\[\033[01;32m\]"
 c_ylw="\[\033[33m\]"
 
 # Window title text
-win_title='\[\e]2;\u@\H \w\a'
+win_title='\[\e]2;\u@\H \w\a\]'
 
 # Normal
 PS1="${win_title}${c_grn}\u@\h${c_wht}:${c_grn}\w${c_wht}\$ "
