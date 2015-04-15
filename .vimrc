@@ -63,7 +63,7 @@ set noequalalways     " do not resize windows on split/close
 
 " Editor
 set autoindent smarttab
-set wrap              " wrap long lines
+set nowrap              " don't wrap long lines
 set whichwrap=b,s,h,l,<,>,[,]   " wrap to the previous/next line on all keys
 set textwidth=80
 set tabstop=4
@@ -79,8 +79,7 @@ set matchtime=1       " show matching brackets quicker than default
 set virtualedit=block " allow Visual block select anywhere
 "set ruler            " show ruler, but only shown if laststatus is off
 "set rulerformat=%h%r%m%=%f " sane value in case laststatus is off
-"set number           " show line numbers
-set nonumber          " don't show line numbers
+set number           " show line numbers
 
 
 
@@ -139,14 +138,14 @@ endif
 "###############################
 
 " Highlight lines over 80 characters
-highlight LineTooLong ctermbg=darkred ctermfg=white guibg=#592929
-match LineTooLong /\%81v.*/
+"highlight LineTooLong ctermbg=darkred ctermfg=white guibg=#592929
+"match LineTooLong /\%81v.*/
 
 " Highlight extra spaces at the end of line
 " VimDiff doesn't like this, so only do it for regular
 if !&diff
     highlight ExtraSpaces ctermbg=red ctermfg=white guibg=red
-    2match ExtraSpaces /\s\+$/
+    match ExtraSpaces /\s\+$/
 endif
 
 " Syntax highlighting
@@ -156,7 +155,7 @@ syntax on
 :set t_Sb=[4%p1%dm
 :set background=dark
 :let filetype_pd = "html"
-:source $VIM/syntax/syntax.vim
+":source $VIM/syntax/syntax.vim
 
 " Restore cursor position on load
 " :au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -485,5 +484,14 @@ augroup BufNewFileFromTemplate
     autocmd BufNewFile * normal! G"_dd1G
     autocmd BufNewFile * silent! match Todo /TODO/
 augroup BufNewFileFromTemplate
+
+
+"###################
+"    Pathogen
+"###################
+
+execute pathogen#infect()
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 
