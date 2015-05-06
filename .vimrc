@@ -225,11 +225,22 @@ function! SVNDiff()
     let rmstat = system("rm " . newfn)
 endfunction
 
+" Toggle line numbers
+map <silent><F7> :set number!<CR>
+map <silent><leader>n :set number!<CR>
+
+" Yank all lines
+map <silent><F8> gg"+yG
+map <silent><leader>a gg"+yG
+
 " Kill trailing whitespace on all lines in file
 map <silent><F9> :call KillTrailingWS()<CR>
 function! KillTrailingWS()
     :%s/\s*$//g
 endfunction
+
+" Toggle between dark and light backgrounds
+map <silent><F10> :let &background=(&background == "dark"?"light":"dark")<CR>
 
 " Run the current buffer in an X terminal that disappears after 5 minutes.
 " Needs the env var $TERM set to xterm or some compatible X11 terminal.
@@ -250,16 +261,9 @@ function RunBufferInTerm ()
     redraw!
 endfunction
 
-" Yank all lines
-map <silent><F8> gg"+yG
-map <silent><leader>a gg"+yG
+" <ctrl>+r to reindent file
+map <silent><C-r> mzgg=G`z
 
-" Toggle line numbers
-map <silent><F7> :set number!<CR>
-map <silent><leader>n :set number!<CR>
-
-" Toggle between dark and light backgrounds
-map <silent><F10> :let &background=(&background == "dark"?"light":"dark")<CR>
 
 
 "###############################
@@ -456,23 +460,23 @@ map <silent><F3> :call JumpToTestsForClass()<cr>
 "  Filetype-specific overrides
 "###############################
 
-autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab " Python
-autocmd FileType man set tabstop=8|set shiftwidth=8|set noexpandtab  " Man page
+" 2 space indent overrides
+autocmd BufRead,BufNewFile *.html,*.js,*.css,*.scss setl sw=2 sts=2 et
+autocmd BufRead,BufNewFile *.html setl textwidth=120
 
 augroup python
     au!
-    autocmd BufRead,BufNewFile *.py,*.pd set ts=4 sw=4
-    autocmd BufRead,BufNewFile *.py,*.pd set smarttab softtabstop=4 et
+    autocmd BufRead,BufNewFile *.py setl ts=4 sw=4 softtabstop=4 et
     " make indentation a little smarter
-    autocmd BufRead,BufNewFile *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,do,switch
+    autocmd BufRead,BufNewFile *.py setl smarttab softtabstop=4 et
+    autocmd BufRead,BufNewFile *.py setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,do,switch
     inoremap # X<C-H>#
-    autocmd BufNewFile,BufRead *.pd setlocal filetype=html
 augroup end
 
-augroup javascript
-    au!
-    autocmd BufRead,BufNewFile *.js set ts=4 sw=4 smarttab softtabstop=4 et
-augroup end
+"augroup javascript
+"    au!
+"    autocmd BufRead,BufNewFile *.js set ts=4 sw=4 smarttab softtabstop=4 et
+"augroup end
 
 " Templates for new files. Silent if the template for the
 " extension does not exist. This just loads what extension matches in
@@ -490,8 +494,12 @@ augroup BufNewFileFromTemplate
 "    Pathogen
 "###################
 
+let NERDTreeIgnore = ['\.pyc$']
+
 execute pathogen#infect()
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" <ctrl>+n to toggle NERDTree
+map <silent> <C-n> :NERDTreeToggle<CR>
 
