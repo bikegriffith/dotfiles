@@ -196,13 +196,13 @@ augroup END
 "** <F7> or \n  Toggle line #'s
 "** <F8> or \a  Yank all lines
 "** <F9>        Kill all trailing whitespace
-"** <F10>       Toggle BG color
-"** <F11> or \r Run buffer in xterm
+"** <F10> or \r Reindent file
+"** <F11>       Run buffer in xterm
 
 " Clear search highlight in normal mode
 nnoremap <silent><CR> :nohlsearch<CR><CR>
 
-" Clear folds and redraw window
+" <F5> to clear folds and redraw window
 map <silent><F5> :call RedrawWindow()<CR>
 function! RedrawWindow()
     set nofoldenable
@@ -210,7 +210,7 @@ function! RedrawWindow()
     :redraw!
 endfunction
 
-" VimDiff against HEAD in SVN.
+" <F6> to vimdiff against HEAD in SVN.
 map <silent><F6> :call SVNDiff()<CR>
 map <silent><leader>ds :call SVNDiff()<CR>
 function! SVNDiff()
@@ -225,28 +225,28 @@ function! SVNDiff()
     let rmstat = system("rm " . newfn)
 endfunction
 
-" Toggle line numbers
+" <F7> to toggle line numbers
 map <silent><F7> :set number!<CR>
 map <silent><leader>n :set number!<CR>
 
-" Yank all lines
+" <F8> to yank all lines
 map <silent><F8> gg"+yG
 map <silent><leader>a gg"+yG
 
-" Kill trailing whitespace on all lines in file
+" <F9> to kill trailing whitespace on all lines in file
 map <silent><F9> :call KillTrailingWS()<CR>
 function! KillTrailingWS()
     :%s/\s*$//g
 endfunction
 
-" Toggle between dark and light backgrounds
-map <silent><F10> :let &background=(&background == "dark"?"light":"dark")<CR>
+" <F10> to reindent file
+map <silent><C-r> mzgg=G`z
+map <silent><leader>r mzgg=G`z
 
-" Run the current buffer in an X terminal that disappears after 5 minutes.
+" <F11> Run the current buffer in an X terminal that disappears after 5 minutes.
 " Needs the env var $TERM set to xterm or some compatible X11 terminal.
 " This does not save first!
 map <silent><F11> :call RunBufferInTerm()<CR>
-map <silent><leader>r :call RunBufferInTerm()<CR>
 function RunBufferInTerm ()
     if &filetype == 'python'
         silent !$TERM -bg black -fg green -e bash -c "python %; sleep 300" &
@@ -260,9 +260,6 @@ function RunBufferInTerm ()
     sleep 1
     redraw!
 endfunction
-
-" <ctrl>+r to reindent file
-map <silent><C-r> mzgg=G`z
 
 
 
@@ -461,7 +458,7 @@ map <silent><F3> :call JumpToTestsForClass()<cr>
 "###############################
 
 " 2 space indent overrides
-autocmd BufRead,BufNewFile *.html,*.js,*.css,*.scss setl sw=2 sts=2 et
+autocmd BufRead,BufNewFile *.html,*.js setl sw=2 sts=2 et
 autocmd BufRead,BufNewFile *.html setl textwidth=120
 
 augroup python
