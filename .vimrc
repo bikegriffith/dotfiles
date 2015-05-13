@@ -240,7 +240,7 @@ function! KillTrailingWS()
 endfunction
 
 " <F10> to reindent file
-map <silent><C-r> mzgg=G`z
+map <silent><F10> mzgg=G`z
 map <silent><leader>r mzgg=G`z
 
 " <F11> Run the current buffer in an X terminal that disappears after 5 minutes.
