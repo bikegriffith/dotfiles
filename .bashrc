@@ -1,9 +1,7 @@
 #!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
-export PATH=$PATH:/opt/flex_sdk_3.4/bin
-export VIM=/usr/share/vim/vim72/
-export SB=$HOME/src/sandbox
+export VIM=/usr/share/vim/vim73/
 
 
 # Start ssh-agent with my private keys
