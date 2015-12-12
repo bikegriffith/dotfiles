@@ -494,7 +494,7 @@ augroup BufNewFileFromTemplate
 let NERDTreeIgnore = ['\.pyc$']
 
 execute pathogen#infect()
-autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " <ctrl>+n to toggle NERDTree
