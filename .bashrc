@@ -51,3 +51,9 @@ fi
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+    . /usr/local/etc/bash_completion.d/git-completion.bash
+fi
+if [ -f /usr/local/etc/bash_completion.d/npm ]; then
+    . /usr/local/etc/bash_completion.d/npm
+fi

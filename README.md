@@ -2,6 +2,11 @@
 
 > My configuration for a Linux or OSX workstation
 
+
+NOTE: You're probably better off looking at something like
+https://github.com/nicolashery/mac-dev-setup, but this might have a few other
+tricks.
+
 ## New Mac Setup
 
 ```
@@ -9,11 +14,14 @@
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install cask
 
-# Apps
+# Apps and Dev Tools
 brew install vim
+brew install node
+brew install git
 brew cask install google-chrome
 brew cask install iterm2
 brew cask install sublime-text
+
 
 # Config
 mkdir ~/src && cd ~/src
