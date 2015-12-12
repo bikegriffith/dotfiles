@@ -5,8 +5,6 @@
 ## New Mac Setup
 
 ```
-
-
 # Homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install cask
@@ -27,4 +25,12 @@ mkdir ~/Library/KeyBindings && cp Library/DefaultKeyBinding.dict ~/Library/KeyBi
 cp -r .vim* ~/
 mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+
+
+# Git setup
+git config --global --edit
+git config --global push.default matching
+
+echo "Now, make sure you generate a SSH key and add it to github."
+echo "See: https://help.github.com/articles/generating-ssh-keys/"
 ```
