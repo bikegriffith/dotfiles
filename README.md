@@ -11,19 +11,16 @@ tricks.
 
 ```
 # Homebrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install cask
 
 # Apps and Dev Tools
-brew install vim
-brew install node
-brew install git
-brew cask install google-chrome
+brew install node docker macvim
 brew cask install iterm2
 brew cask install sublime-text
 brew cask install skitch
-brew cask install evernote
 brew cask install slack
+brew cask install google-chrome
 
 # Config
 mkdir ~/src && cd ~/src
