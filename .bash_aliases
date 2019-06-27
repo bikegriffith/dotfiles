@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# Sandbox
-alias sb='. $SB/bin/activate; cd $SB/src'
-alias sbd='deactivate'
-alias svndiff='svn diff --diff-cmd $HOME/bin/diffwrap.sh'
+# Use MacVim
+alias vi=mvim
 
 # Enable color support of ls and also add handy aliases
 if [ "$TERM" != "dumb" ] && [ -x /usr/bin/dircolors ]; then
