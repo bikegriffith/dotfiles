@@ -21,6 +21,10 @@ brew cask install sublime-text
 brew cask install skitch
 brew cask install slack
 brew cask install google-chrome
+brew cask install spotify
+brew cask install sketch
+brew cask install bitwarden
+brew cask install firefox
 
 # Config
 mkdir ~/src && cd ~/src
