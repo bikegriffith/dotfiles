@@ -1,8 +1,17 @@
 #!/bin/bash
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
-export VIM=/usr/share/vim/vim73/
+export VIM=/usr/share/vim/vim80/
+export GOPATH=/Users/mdg/Source/go
 
+# Ruby things
+export RESTCLIENT_LOG=stdout
+export DSN='mysql://root@localhost(3306)/test'
+export REDIS_URL='redis://localhost:6379'
+
+# Roku things
+export ROKU_DEV_TARGET=192.168.1.13
+export DEVPASSWORD=password
 
 # Start ssh-agent with my private keys
 export HOSTNAME=`hostname` # HOSTNAME not set some machines
