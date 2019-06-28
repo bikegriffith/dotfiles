@@ -17,7 +17,8 @@ brew install cask
 # Apps and Dev Tools
 brew install node docker go \
 	macvim \
-	bash-completion git tree
+	bash-completion git tree \
+    openssl@1.1 mysql@5.7
 brew cask install iterm2
 brew cask install sublime-text
 brew cask install skitch
