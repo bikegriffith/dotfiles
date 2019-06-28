@@ -15,7 +15,7 @@ tricks.
 brew install cask
 
 # Apps and Dev Tools
-brew install node docker macvim go
+brew install node docker macvim go bash-completion git
 brew cask install iterm2
 brew cask install sublime-text
 brew cask install skitch
