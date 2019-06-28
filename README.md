@@ -28,6 +28,7 @@ brew cask install sketch
 brew cask install bitwarden
 brew cask install firefox
 sudo easy_install grin
+sudo gem install bundler
 
 # Config
 mkdir ~/src && cd ~/src
@@ -38,6 +39,7 @@ ln -s ~/.bashrc ~/.bash_profile
 cp -r .vim* ~/
 mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
 mkdir ~/Library/KeyBindings && cp Library/DefaultKeyBinding.dict ~/Library/KeyBindings/
 defaults write NSGlobalDomain KeyRepeat -int 0
 
