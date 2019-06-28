@@ -15,7 +15,9 @@ tricks.
 brew install cask
 
 # Apps and Dev Tools
-brew install node docker macvim go bash-completion git
+brew install node docker go \
+	macvim \
+	bash-completion git tree
 brew cask install iterm2
 brew cask install sublime-text
 brew cask install skitch
@@ -25,6 +27,7 @@ brew cask install spotify
 brew cask install sketch
 brew cask install bitwarden
 brew cask install firefox
+sudo easy_install grin
 
 # Config
 mkdir ~/src && cd ~/src
