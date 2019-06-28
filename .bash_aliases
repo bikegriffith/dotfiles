@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Use MacVim
-alias vi=mvim
-alias crontab = 'VIM_CRONTAB=true crontab'
+# VIM
+# alias vi=mvim
+alias crontab='VIM_CRONTAB=true crontab'
 
 # Robo
 alias robo='robo --config ~/Source/go/src/github.com/boxcast/robo/robo.yml'

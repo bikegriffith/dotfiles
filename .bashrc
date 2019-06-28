@@ -2,7 +2,6 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
 export VIM=/usr/share/vim/vim80/
-export GOPATH=/Users/mdg/Source/go
 
 # Ruby things
 export RESTCLIENT_LOG=stdout
@@ -12,6 +11,15 @@ export REDIS_URL='redis://localhost:6379'
 # Roku things
 export ROKU_DEV_TARGET=192.168.1.13
 export DEVPASSWORD=password
+
+# Node version manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
+
+# Golang
+export GOPATH="$HOME/Source/go"
+export PATH="$PATH:$GOPATH/bin"
 
 # Start ssh-agent with my private keys
 export HOSTNAME=`hostname` # HOSTNAME not set some machines
